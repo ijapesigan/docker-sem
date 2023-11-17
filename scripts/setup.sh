@@ -2,6 +2,7 @@
 
 set -e
 
+bash rproject.sh
 bash lavaan.sh
 bash openmx_sys.sh
 bash openmx.sh
