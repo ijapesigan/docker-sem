@@ -2,6 +2,7 @@
 
 set -e
 
+bash ubuntu_sys_pkg.sh
 bash rproject.sh
 bash lavaan.sh
 bash openmx_sys.sh
