@@ -11,5 +11,6 @@ bash metasem.sh
 bash symsem.sh
 bash semlbci.sh
 bash semmcci.sh
+bash longmi.sh
 bash mpdemo.sh
 bash post.sh
