@@ -14,4 +14,5 @@ bash semlbci.sh
 bash semmcci.sh
 bash longmi.sh
 bash mpdemo.sh
+bash mplusautomation.sh
 bash post.sh
