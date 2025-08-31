@@ -1,4 +1,4 @@
-FROM ijapesigan/sem:main
+FROM ijapesigan/sem:latest
 
 ADD scripts /usr/src/local/src
 RUN chmod 777 /usr/src/local/src/setup.sh         && \
