@@ -15,5 +15,6 @@ bash semmcci.sh
 bash longmi.sh
 bash mpdemo.sh
 bash mplusautomation.sh
+bash mplusshiny.sh
 # bash semplot.sh
 bash post.sh
