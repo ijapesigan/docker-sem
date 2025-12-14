@@ -15,6 +15,9 @@ function apt_install() {
 }
 
 # for mpdemo
-
 apt_install \
     wget
+
+# gsl
+apt_install \
+    libgsl-dev
