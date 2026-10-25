@@ -1,0 +1,1 @@
+The structural equation modeling image of the daily chain: built on `ijapesigan/tidymodels`, with lavaan, OpenMx, metaSEM, symSEM, semlbci, semmcci, longMI, semPlot, MplusAutomation, and the Mplus demo (amd64). Its daily build starts `ijapesigan/ssm`.

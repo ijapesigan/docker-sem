@@ -1,0 +1,9 @@
+# System packages wanted, one per line (install-apt.sh): tools, and
+# libraries no R package declares. R packages' system libraries are
+# looked up by install-cran.sh.
+
+# tools
+wget
+
+# kept from the old list: no package script here declares it
+libgsl-dev

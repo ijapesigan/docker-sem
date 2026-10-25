@@ -13,7 +13,7 @@ else
     echo "GITHUB_PAT NOT set"
 fi
 
-bash ubuntu_sys_pkg.sh
+bash install-apt.sh
 bash rproject_sys.sh
 bash rproject.sh
 bash lavaan.sh
