@@ -39,6 +39,22 @@ apptainer pull sem.sif docker://ijapesigan/sem
 apptainer shell sem.sif
 ```
 
+## Contents
+
+R packages from CRAN (`scripts/cran.txt`), with their dependencies:
+
+- then replaces it with 2.23.1, and later installs skip it
+  (–skipinstalled): lavaan, ifaTools, metaSEM, symSEM, semlbci, semmcci,
+  MplusAutomation, semPlot
+- and Imports; the packages its vignettes load: roxygen2, pkgbuild,
+  knitr, rmarkdown, markdown, Rcpp, RcppEigen, RcppParallel,
+  StanHeaders, BH, rpf, Matrix, digest, MASS, lifecycle, dplyr, ggplot2,
+  reshape2
+
+R packages from GitHub (`scripts/github.txt`), installed after CRAN:
+
+- [ijapesigan/longMI](https://github.com/ijapesigan/longMI)
+
 ## Builds
 
 - Docker Build and Push SEM \[multi\] (Daily)

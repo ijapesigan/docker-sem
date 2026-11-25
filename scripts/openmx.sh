@@ -1,34 +1,28 @@
 #!/bin/bash
 
+# OpenMx from its GitHub tag, built with OpenMx's own `make cran-build`
+# (remotes::install_github() cannot build it). CRAN's 2.22.11 has the
+# continuous-time noise covariance bug (t(A) for A), fixed upstream in
+# b592c227 (2026-11-01). Remove this script when CRAN has OpenMx >= 2.23.1.
+
 set -e
 
-# CRAN packages wanted (never their dependencies)
-pkgs=(OpenMx ifaTools)
+OPENMX_TAG="v2.23.1"
+OPENMX_SRC="/tmp/OpenMx"
+RPROFILE="/tmp/Rprofile-buildtools.R"
 
-function apt_install() {
-    if ! dpkg -s "$@" >/dev/null 2>&1; then
-        if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
-            apt-get update
-        fi
-        apt-get install -y --no-install-recommends "$@"
-    fi
-}
+# nested make calls fail with a parallel jobserver
+unset MAKEFLAGS
 
-# system dependencies of the packages and of their R dependencies: pak
-# looks them up (the r-hub system requirements database), apt installs
-# them; skipped without apt
-install2.r --error --skipinstalled pak
-if command -v apt-get > /dev/null 2>&1; then
-    sys="$(Rscript -e "writeLines(as.character(unique(unlist(pak::pkg_sysreqs(commandArgs(TRUE))\$packages\$system_packages))))" "${pkgs[@]}")"
-    if [ -n "${sys}" ]; then
-        mapfile -t sys_pkgs <<< "${sys}"
-        apt_install "${sys_pkgs[@]}"
-    fi
-fi
+git clone --depth 1 --branch "${OPENMX_TAG}" \
+    https://github.com/OpenMx/OpenMx.git "${OPENMX_SRC}"
+cd "${OPENMX_SRC}"
 
-# the packages and their R dependencies
-install2.r --error --skipinstalled -n -1 "${pkgs[@]}"
+# pkgbuild's build-tools check fails in the build container; the compilers work
+echo 'options(buildtools.check = function(action) TRUE)' > "${RPROFILE}"
+R_PROFILE_USER="${RPROFILE}" make cran-build
+R CMD INSTALL staging/OpenMx_*.tar.gz
 
-R -e "library(OpenMx)"
-
-echo -e "\nInstall OpenMx, done!"
+cd /
+rm -rf "${OPENMX_SRC}" "${RPROFILE}"
+R -q -e "stopifnot(packageVersion('OpenMx') >= '2.23.1')"

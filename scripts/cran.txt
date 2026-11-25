@@ -1,0 +1,38 @@
+# CRAN packages wanted, one per line, never their dependencies
+# (install-cran.sh; their system libraries are looked up by pak)
+
+# from the old package scripts, in their setup.sh order (lavaan.sh,
+# openmx.sh, metasem.sh, symsem.sh, semlbci.sh, semmcci.sh,
+# mplusautomation.sh, semplot.sh); OpenMx itself is built by openmx.sh.
+# ifaTools, metaSEM and symSEM pull CRAN OpenMx here; openmx.sh
+# then replaces it with 2.23.1, and later installs skip it (--skipinstalled)
+lavaan
+ifaTools
+metaSEM
+symSEM
+semlbci
+semmcci
+MplusAutomation
+semPlot
+
+# OpenMx 2.23.1 build (openmx.sh, make cran-build): roxygen2 and pkgbuild
+# write its help pages, knitr and rmarkdown its vignettes; its LinkingTo
+# and Imports; the packages its vignettes load
+roxygen2
+pkgbuild
+knitr
+rmarkdown
+markdown
+Rcpp
+RcppEigen
+RcppParallel
+StanHeaders
+BH
+rpf
+Matrix
+digest
+MASS
+lifecycle
+dplyr
+ggplot2
+reshape2

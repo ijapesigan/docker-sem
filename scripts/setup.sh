@@ -14,18 +14,13 @@ else
 fi
 
 bash install-apt.sh
+bash openmx_sys.sh
+bash install-cran.sh
 bash rproject_sys.sh
 bash rproject.sh
-bash lavaan.sh
-bash openmx_sys.sh
+bash install-github.sh
 bash openmx.sh
-bash metasem.sh
-bash symsem.sh
-bash semlbci.sh
-bash semmcci.sh
-bash longmi.sh
 bash mpdemo.sh
-bash mplusautomation.sh
 bash mplusshiny.sh
-bash semplot.sh
+bash check.sh
 bash post.sh

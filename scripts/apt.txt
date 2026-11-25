@@ -5,5 +5,12 @@
 # tools
 wget
 
+# OpenMx 2.23.1 from its GitHub tag (openmx.sh): git clones it (and git
+# archive and git describe run in its build), make runs its cran-build,
+# pandoc renders its vignettes
+git
+make
+pandoc
+
 # kept from the old list: no package script here declares it
 libgsl-dev
